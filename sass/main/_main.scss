@@ -1,0 +1,60 @@
+// body {
+//   margin-left: 22rem;
+// }
+//
+// a {
+//   text-decoration: none;
+// }
+//
+// .main-navigation li {
+//   float: none;
+// }
+//
+.site-header {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 25rem;
+  background: #fff;
+  color: #555;
+  padding: 0 1rem;
+  right: auto;
+  left: 0;
+}
+//
+// .site-description {
+//   @include font-size(15);
+// }
+//
+// section {
+//   background-color: $color__background-ins;
+// }
+//
+// .container {
+//   margin-left: auto;
+//   margin-right: auto;
+//   padding-left: 15px;
+//   padding-right: 15px;
+//   width: 100%;
+//   background-color: rgb(255, 164, 80);
+//   @include respond(phone) {
+//     max-width: 540px;
+//   }
+//   @include respond(tab-land) {
+//     max-width: 720px;
+//   }
+//   @include respond(tab-port) {
+//     max-width: 960px;
+//   }
+//   @include respond(big-desktop) {
+//     max-width: 1140px;
+//   }
+// }
+// .hr {
+//   padding-top: 1.5rem;
+//   border-color: #fff;
+//   border-top: 1px solid;
+// }
+// .site-title {
+//   margin: 0;
+// }

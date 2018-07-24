@@ -38,6 +38,7 @@ html {
 
 body {
 	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+  margin-left: 25rem;
   word-wrap : break-word;//アルファベットの折返し防止
   overflow-wrap : break-word;
 }
