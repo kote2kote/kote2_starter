@@ -15,17 +15,17 @@
 get_header();
 ?>
 
-
-  <section>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
 
 		<?php
 		if ( have_posts() ) :
 
 			if ( is_home() && ! is_front_page() ) :
 				?>
-
-				<?php single_post_title(); ?>
-
+				<header>
+					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
+				</header>
 				<?php
 			endif;
 
@@ -50,6 +50,9 @@ get_header();
 
 		endif;
 		?>
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
 
 <?php
 get_sidebar();

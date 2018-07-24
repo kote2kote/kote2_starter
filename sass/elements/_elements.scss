@@ -1,0 +1,64 @@
+html {
+	box-sizing: border-box;
+  font-family: $font__main;
+	line-height: 1.6;
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+
+  @include respond(tab-land) { // width < 1200?
+      font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) { // width < 900?
+      font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+      font-size: 75%; //1rem = 12, 12/16
+  }
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+	color: $color__selection_color;
+	background: $color__selection_bgcolor;
+}
+
+::-moz-selection {
+  color: $color__selection_color;
+	background: $color__selection_bgcolor;
+}
+
+body {
+	background: $color__background-body; /* Fallback for when there is no custom background color defined. */
+  margin-left: 25rem;
+  word-wrap : break-word;//アルファベットの折返し防止
+  overflow-wrap : break-word;
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5rem;
+}
+
+@import "lists";
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1rem 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+@import "tables";

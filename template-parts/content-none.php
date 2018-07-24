@@ -9,10 +9,12 @@
 
 ?>
 
-<?php esc_html_e( 'Nothing Found', 'kote2_starter' ); ?>
+<section class="no-results not-found">
+	<header class="page-header">
+		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'kote2_starter' ); ?></h1>
+	</header><!-- .page-header -->
 
-
-
+	<div class="page-content">
 		<?php
 		if ( is_home() && current_user_can( 'publish_posts' ) ) :
 
@@ -32,7 +34,7 @@
 		elseif ( is_search() ) :
 			?>
 
-		<?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'kote2_starter' ); ?>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'kote2_starter' ); ?></p>
 			<?php
 			get_search_form();
 
@@ -45,3 +47,5 @@
 
 		endif;
 		?>
+	</div><!-- .page-content -->
+</section><!-- .no-results -->

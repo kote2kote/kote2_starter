@@ -1,3 +1,33 @@
+// Rem output with px fallback
+@mixin font-size($sizeValue: 10) {
+  font-size: $sizeValue+ px;
+	font-size: ($sizeValue / 10)  + rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Column width with margin
+@mixin column-width($numberColumns: 3) {
+	width: map-get( $columns, $numberColumns ) - ( ( $columns__margin * ( $numberColumns - 1 ) ) / $numberColumns );
+}
+
 /*============================================================================
  extend setting
 ============================================================================*/
@@ -56,22 +86,15 @@ ORDER: Base + typography > general layout + grid > page layout > components
 */
 
 @mixin respond($breakpoint) {
-    /*　画面サイズが600pxまではここを読み込む　*/
     @if $breakpoint == phone {
         @media only screen and (max-width: 37.5em) { @content };    //600px
     }
-    /*　画面サイズが900pxまではここを読み込む　*/
     @if $breakpoint == tab-port {
         @media only screen and (max-width: 56.25em) { @content };     //900px
     }
-    /*　画面サイズが1200pxまではここを読み込む　*/
     @if $breakpoint == tab-land {
         @media only screen and (max-width: 75em) { @content };    //1200px
     }
-
-    /*　画面サイズが1201-1800は通常のcssの値を参照する　*/
-
-    /*　画面サイズが1800pxからはここを読み込む　*/
     @if $breakpoint == big-desktop {
         @media only screen and (min-width: 112.5em) { @content };    //1800
     }
