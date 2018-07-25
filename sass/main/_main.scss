@@ -1,15 +1,46 @@
-// body {
-//   margin-left: 22rem;
-// }
-//
-// a {
-//   text-decoration: none;
-// }
-//
-// .main-navigation li {
-//   float: none;
-// }
-//
+body {
+  margin-left: 25rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @include fz(15);
+}
+
+a {
+  transition: all .2s;
+}
+
+.site-title, .site-description {
+  font-family:$font-family-san-serif;
+  font-weight: 300;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  margin-bottom: .5rem;
+}
+
+.site-title {
+  @include fz(17);
+  padding-top: 1rem;
+}
+
+.site-description  {
+  @include fz(10);
+}
+
+#primary-menu {
+  @include fz(13);
+}
+
+#site-navigation {
+  margin-top: 2rem;
+  padding: 3rem 2rem 0;
+  border-color: #eee;
+  border-top: 1px solid  #eee;
+  li:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+}
+
 .site-header {
   position: fixed;
   top: 0;
@@ -21,40 +52,3 @@
   right: auto;
   left: 0;
 }
-//
-// .site-description {
-//   @include font-size(15);
-// }
-//
-// section {
-//   background-color: $color__background-ins;
-// }
-//
-// .container {
-//   margin-left: auto;
-//   margin-right: auto;
-//   padding-left: 15px;
-//   padding-right: 15px;
-//   width: 100%;
-//   background-color: rgb(255, 164, 80);
-//   @include respond(phone) {
-//     max-width: 540px;
-//   }
-//   @include respond(tab-land) {
-//     max-width: 720px;
-//   }
-//   @include respond(tab-port) {
-//     max-width: 960px;
-//   }
-//   @include respond(big-desktop) {
-//     max-width: 1140px;
-//   }
-// }
-// .hr {
-//   padding-top: 1.5rem;
-//   border-color: #fff;
-//   border-top: 1px solid;
-// }
-// .site-title {
-//   margin: 0;
-// }

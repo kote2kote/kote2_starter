@@ -1,0 +1,670 @@
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Widgets
+# Content
+	## Posts and pages
+	## Comments
+# Infinite scroll
+# Media
+	## Captions
+	## Galleries
+--------------------------------------------------------------*/
+
+/*============================================================================
+ base setting
+============================================================================*/
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+	font-family: $font__main;
+  line-height: 1.6;
+  font-size: 62.5%;
+
+  @include respond(tab-land) { // width < 1200?
+      font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
+
+  @include respond(tab-port) { // width < 900?
+      font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+      font-size: 75%; //1rem = 12, 12/16
+  }
+}
+
+body {
+  line-height: $font__line-height-body;
+	@include fz;
+  word-wrap : break-word;
+  overflow-wrap : break-word;
+}
+
+::selection {
+	color: $color__selection_color;
+	background: $color__selection_bgcolor;
+}
+
+::-moz-selection {
+  color: $color__selection_color;
+	background: $color__selection_bgcolor;
+}
+
+hr {
+	background-color: $color__background-hr;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5rem;
+}
+
+/*============================================================================
+ headings setting
+============================================================================*/
+
+h1, h2, h3, h4, h5, h6 {
+	clear: both;
+}
+
+/*============================================================================
+ copy setting
+============================================================================*/
+
+p {
+	margin-bottom: 1.5rem;
+}
+
+dfn, cite, em, i {
+	font-style: italic;
+}
+
+blockquote {
+	margin: 0 1.5rem;
+}
+
+address {
+	margin: 0 0 1.5rem;
+}
+
+pre {
+	background: $color__background-pre;
+	font-family: $font__pre;
+	@include fz(15);
+	line-height: $font__line-height-pre;
+	margin-bottom: 1.6rem;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6rem;
+}
+
+code, kbd, tt, var {
+	font-family: $font__code;
+	@include fz(15);
+}
+
+abbr, acronym {
+	border-bottom: 1px dotted $color__border-abbr;
+	cursor: help;
+}
+
+mark, ins {
+	background: $color__background-ins;
+	text-decoration: none;
+}
+
+big {
+  @include fz(20);
+}
+
+
+/*============================================================================
+ lists setting
+============================================================================*/
+
+ul, ol {
+	margin: 0 0 1.5rem 3rem;
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+	margin-left: 1.5rem;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 1.5rem 1.5rem;
+}
+
+/*============================================================================
+ figures setting
+============================================================================*/
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+}
+
+figure {
+	margin: 1rem 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+/*============================================================================
+ tables setting
+============================================================================*/
+
+table {
+	margin: 0 0 1.5rem;
+	width: 100%;
+}
+
+/*============================================================================
+ form setting
+============================================================================*/
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: $color__border-button;
+	border-radius: 3px;
+	background: $color__background-button;
+	color: rgba(0, 0, 0, .8);
+	@include fz(0.75);
+	line-height: 1;
+	padding: .6rem 1rem .4rem;
+
+	&:hover {
+		border-color: $color__border-button-hover;
+	}
+
+	&:active,
+	&:focus {
+		border-color: $color__border-button-focus;
+	}
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: $color__text-input;
+	border: 1px solid $color__border-input;
+	border-radius: 3px;
+	padding: 3px;
+
+	&:focus {
+		color: $color__text-input-focus;
+	}
+}
+
+select {
+	border: 1px solid $color__border-input;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*============================================================================
+ links setting
+============================================================================*/
+
+a {
+	color: $color__link;
+  text-decoration: none;
+	&:visited {
+		color: $color__link-visited;
+	}
+	&:hover,
+	&:focus,
+	&:active {
+		color: $color__link-hover;
+	}
+	&:focus {
+		outline: thin dotted;
+	}
+	&:hover,
+	&:active {
+		outline: 0;
+	}
+}
+
+/*============================================================================
+ menus setting
+============================================================================*/
+
+.main-navigation {
+	clear: both;
+	display: block;
+	float: left;
+	width: 100%;
+
+	ul {
+		display: none;
+		list-style: none;
+		margin: 0;
+		padding-left: 0;
+
+		ul {
+			//box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+			float: left;
+			//position: absolute;
+			top: 100%;
+			left: -999rem;
+			z-index: 99999;
+      margin-left: 1rem;
+
+			ul {
+				left: -999em;
+				top: 0;
+			}
+
+			li {
+				&:hover > ul,
+				&.focus > ul {
+					left: 100%;
+				}
+			}
+
+			a {
+				width: 200px;
+			}
+
+			:hover > a,
+			.focus > a {
+			}
+
+			a:hover,
+			a.focus {
+			}
+		}
+
+		li:hover > ul,
+		li.focus > ul {
+			left: auto;
+		}
+	}
+
+	li {
+		// float: left;
+		// position: relative;
+
+		&:hover > a,
+		&.focus > a {
+		}
+	}
+
+	a {
+		display: block;
+		text-decoration: none;
+	}
+
+	.current_page_item > a,
+	.current-menu-item > a,
+	.current_page_ancestor > a,
+	.current-menu-ancestor > a {
+	}
+}
+
+/* Small menu. */
+.menu-toggle,
+.main-navigation.toggled ul {
+	display: block;
+}
+
+@media screen and (min-width: 37.5rem) {
+	.menu-toggle {
+		display: none;
+	}
+	.main-navigation ul {
+		display: block;
+	}
+}
+
+.comment-navigation,
+.posts-navigation,
+.post-navigation {
+
+	.site-main & {
+		margin: 0 0 1.5rem;
+		overflow: hidden;
+	}
+
+	.nav-previous {
+		float: left;
+		width: 50%;
+	}
+
+	.nav-next {
+		float: right;
+		text-align: right;
+		width: 50%;
+	}
+}
+
+/*============================================================================
+ accessibilities setting
+============================================================================*/
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+
+	&:focus {
+		background-color: $color__background-screen;
+		border-radius: 3px;
+		box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+		clip: auto !important;
+		clip-path: none;
+		color: $color__text-screen;
+		display: block;
+		@include fz(0.875);
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: 15px 23px 14px;
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000; /* Above WP toolbar. */
+	}
+}
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*============================================================================
+ alignments setting
+============================================================================*/
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5rem;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5rem;
+}
+
+.aligncenter {
+	clear: both;
+	@include center-block;
+}
+
+/*============================================================================
+ clearnings setting
+============================================================================*/
+
+.clear:before,
+.clear:after,
+.entry-content:before,
+.entry-content:after,
+.comment-content:before,
+.comment-content:after,
+.site-header:before,
+.site-header:after,
+.site-content:before,
+.site-content:after,
+.site-footer:before,
+.site-footer:after {
+	@include clearfix;
+}
+
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
+	@include clearfix-after;
+}
+
+/*============================================================================
+ sidebar-contents setting
+============================================================================*/
+
+// .content-area {
+// 	float: right;
+// 	margin: 0 0 0 (-$size__site-sidebar);
+// 	width: $size__site-main;
+// }
+//
+// .site-main {
+// 	margin: 0 0 0 $size__site-sidebar;
+// }
+//
+// .site-content .widget-area {
+// 	float: left;
+// 	overflow: hidden;
+// 	width: $size__site-sidebar;
+// }
+//
+// .site-footer {
+// 	clear: both;
+// 	width: $size__site-main;
+// }
+//
+// .content-area {
+// 	float: left;
+// 	margin: 0 (-$size__site-sidebar) 0 0;
+// 	width: $size__site-main;
+// }
+//
+// .site-main {
+// 	margin: 0 $size__site-sidebar 0 0;
+// }
+//
+// .site-content .widget-area {
+// 	float: right;
+// 	overflow: hidden;
+// 	width: $size__site-sidebar;
+// }
+//
+// .site-footer {
+// 	clear: both;
+// 	width: $size__site-main;
+// }
+//
+// @import "no-sidebar";
+// .no-sidebar {
+// 	.content-area {
+// 		float: none;
+// 		margin-left: auto;
+// 		margin-right: auto;
+// 	}
+//
+// 	.site-main {
+// 		margin-right: 0;
+// 	}
+// }
+
+
+
+
+
+/*============================================================================
+ widgets and pages setting
+============================================================================*/
+
+.widget {
+	margin: 0 0 1.5rem;
+
+	/* Make sure select elements fit in widgets. */
+	select {
+		max-width: 100%;
+	}
+}
+
+
+/*============================================================================
+ posts and pages setting
+============================================================================*/
+
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5rem;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin: 1.5rem 0 0;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5rem;
+}
+
+/*============================================================================
+ comments setting
+============================================================================*/
+
+.comment-content a {
+	word-wrap: break-word;
+}
+.bypostauthor {
+	display: block;
+}
+
+/*============================================================================
+ infinite-scroll setting
+============================================================================*/
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*============================================================================
+ media setting
+============================================================================*/
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/* Make sure logo link wraps around logo image. */
+.custom-logo-link {
+	display: inline-block;
+}
+
+.wp-caption {
+	margin-bottom: 1.5rem;
+	max-width: 100%;
+
+	img[class*="wp-image-"] {
+		@include center-block;
+	}
+
+	.wp-caption-text {
+		margin: 0.8075rem 0;
+	}
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+.gallery {
+	margin-bottom: 1.5rem;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+
+	// Loops to enumerate the classes for gallery columns.
+	@for $i from 2 through 9 {
+		.gallery-columns-#{$i} & {
+			max-width: map-get( $columns, $i );
+		}
+	}
+}
+
+.gallery-caption {
+	display: block;
+}

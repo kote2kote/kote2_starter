@@ -2,6 +2,7 @@ var gulp         = require('gulp');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
+var header = require('gulp-header');
 
 gulp.task('default', ['watch', 'sass']);
 
@@ -16,6 +17,7 @@ gulp.task('sass', function () {
 		.pipe(sourcemaps.write({includeContent: false}))
 		.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(autoprefixer(['last 3 versions', 'ie >= 8', 'Android >= 4', 'iOS >= 8']))
+    .pipe(header('@charset "UTF-8";\n\n'))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('./'));
 });
