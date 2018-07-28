@@ -33,29 +33,22 @@
 }
 
 html {
-  box-sizing: border-box;
-	font-family: $font__main;
-  line-height: 1.6;
-  font-size: 62.5%;
-
-  @include respond(tab-land) { // width < 1200?
-      font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
-  }
-
-  @include respond(tab-port) { // width < 900?
-      font-size: 50%; //1 rem = 8px, 8/16 = 50%
-  }
-
-  @include respond(big-desktop) {
-      font-size: 75%; //1rem = 12, 12/16
-  }
+    box-sizing: border-box;
+  	font-family: $font__main;
+    font-size: 62.5%;
 }
 
 body {
   line-height: $font__line-height-body;
-	@include fz;
+	@include fz();
   word-wrap : break-word;
   overflow-wrap : break-word;
+  animation: cloak-in 1s;
+  @keyframes cloak-in {
+    0% {
+      opacity: 0;
+    }
+  }
 }
 
 ::selection {
@@ -67,6 +60,50 @@ body {
   color: $color__selection_color;
 	background: $color__selection_bgcolor;
 }
+
+// *,
+// *::after,
+// *::before {
+//     margin: 0;
+//     padding: 0;
+//     box-sizing: inherit;
+// }
+//
+// html {
+//   box-sizing: border-box;
+// 	font-family: $font__main;
+//   line-height: 1.6;
+//   font-size: 62.5%;
+
+  // @include respond(tab-land) { // width < 1200?
+  //     font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  // }
+  //
+  // @include respond(tab-port) { // width < 900?
+  //     font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  // }
+  //
+  // @include respond(big-desktop) {
+  //     font-size: 75%; //1rem = 12, 12/16
+  // }
+// }
+
+// body {
+//   line-height: $font__line-height-body;
+// 	@include fz();
+//   word-wrap : break-word;
+//   overflow-wrap : break-word;
+// }
+//
+// ::selection {
+// 	color: $color__selection_color;
+// 	background: $color__selection_bgcolor;
+// }
+//
+// ::-moz-selection {
+//   color: $color__selection_color;
+// 	background: $color__selection_bgcolor;
+// }
 
 hr {
 	background-color: $color__background-hr;
@@ -480,64 +517,61 @@ a {
  sidebar-contents setting
 ============================================================================*/
 
+//content-sidebar
+.content-area {
+	float: left;
+	margin: 0 -25% 0 0;
+	width: 100%;
+}
+.site-main {
+	margin: 0 25% 0 0;
+}
+.site-content .widget-area {
+	float: right;
+	overflow: hidden;
+	width: 25%;
+}
+.site-footer {
+	clear: both;
+	width: 100%;
+}
+
+.no-sidebar .content-area {
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+.no-sidebar .site-main {
+	margin-right: 0;
+}
+
+//sidebar-content
 // .content-area {
 // 	float: right;
-// 	margin: 0 0 0 (-$size__site-sidebar);
-// 	width: $size__site-main;
+// 	margin: 0 0 0 -25%;
+// 	width: 100%;
 // }
-//
 // .site-main {
-// 	margin: 0 0 0 $size__site-sidebar;
+// 	margin: 0 0 0 25%;
 // }
-//
 // .site-content .widget-area {
 // 	float: left;
 // 	overflow: hidden;
-// 	width: $size__site-sidebar;
+// 	width: 25%;
 // }
-//
 // .site-footer {
 // 	clear: both;
-// 	width: $size__site-main;
+// 	width: 100%;
 // }
 //
-// .content-area {
-// 	float: left;
-// 	margin: 0 (-$size__site-sidebar) 0 0;
-// 	width: $size__site-main;
+// .no-sidebar .content-area {
+// 	float: none;
+// 	margin-left: auto;
+// 	margin-right: auto;
 // }
-//
-// .site-main {
-// 	margin: 0 $size__site-sidebar 0 0;
+// .no-sidebar .site-main {
+// 	margin-right: 0;
 // }
-//
-// .site-content .widget-area {
-// 	float: right;
-// 	overflow: hidden;
-// 	width: $size__site-sidebar;
-// }
-//
-// .site-footer {
-// 	clear: both;
-// 	width: $size__site-main;
-// }
-//
-// @import "no-sidebar";
-// .no-sidebar {
-// 	.content-area {
-// 		float: none;
-// 		margin-left: auto;
-// 		margin-right: auto;
-// 	}
-//
-// 	.site-main {
-// 		margin-right: 0;
-// 	}
-// }
-
-
-
-
 
 /*============================================================================
  widgets and pages setting

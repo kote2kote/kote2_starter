@@ -1,3 +1,6 @@
+/*============================================================================
+ ベースタグ調整
+============================================================================*/
 body {
   margin-left: 25rem;
 }
@@ -6,8 +9,29 @@ h1, h2, h3, h4, h5, h6 {
   @include fz(15);
 }
 
+ul,ol {
+  list-style: none;
+  margin: 0;
+}
+
 a {
   transition: all .2s;
+}
+
+/*============================================================================
+ サイドメニュー
+============================================================================*/
+.site-header {
+  position: fixed;
+  top: 0;
+  border-right: 1px solid  #eee;
+  height: 100%;
+  width: 25rem;
+  background: #fff;
+  color: #555;
+  padding: 0 1rem;
+  right: auto;
+  left: 0;
 }
 
 .site-title, .site-description {
@@ -41,14 +65,58 @@ a {
   }
 }
 
-.site-header {
-  position: fixed;
+
+/*============================================================================
+ グロナビ
+============================================================================*/
+.global-navigation {
+  position: sticky;
   top: 0;
-  height: 100%;
-  width: 25rem;
-  background: #fff;
-  color: #555;
-  padding: 0 1rem;
-  right: auto;
-  left: 0;
+  border-bottom: 1px solid  #eee;
+  background-color: #fff;
+  padding: 3rem 1.5rem;
+}
+
+#global-menu {
+  position: relative;
+
+  li:last-child {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/*============================================================================
+ コンテンツ
+============================================================================*/
+#content {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+  //background-color: rgb(255, 164, 80);
+  @include respond(phone) {
+    max-width: 540px;
+  }
+  @include respond(tab-land) {
+    max-width: 720px;
+  }
+  @include respond(tab-port) {
+    max-width: 960px;
+  }
+  @include respond(big-desktop) {
+    max-width: 1140px;
+  }
+}
+
+.content-area {
+  padding: 5rem 3rem 0;
+}
+
+.entry-title {
+  padding: 5rem 0 2rem;
+  @include fz(20);
 }

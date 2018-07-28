@@ -44,7 +44,7 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
+		<nav id="site-navigation" class="main-navigation fueeeeee">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'kote2_starter' ); ?></button>
 			<?php
 			wp_nav_menu( array(
@@ -54,5 +54,14 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+  <nav class="global-navigation">
+    <?php
+    wp_nav_menu( array(
+      'theme_location' => 'menu-2',
+      'menu_id'        => 'global-menu',
+    ) );
+    ?>
+  </nav>
 
 	<div id="content" class="site-content">
